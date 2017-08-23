@@ -1,11 +1,11 @@
 {
   "name": "redux-date-now-middleware",
   "description": "Redux middlware to provide Date.now() in actions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "dai-shi/redux-date-now-middleware",
   "main": "./dist/index.js",
   "scripts": {
-    "compile": "babel src -d dist",
+    "compile": "babel src -d dist --presets es2015 --plugins transform-object-rest-spread",
     "test": "npm run eslint",
     "eslint": "eslint src"
   },
@@ -34,13 +34,5 @@
       "airbnb"
     ],
     "rules": {}
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ],
-    "plugins": [
-      "transform-object-rest-spread"
-    ]
   }
 }

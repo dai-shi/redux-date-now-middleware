@@ -13,12 +13,29 @@ npm install redux-date-now-middleware
 ```
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
-import dateNowMiddlware from 'redux-date-now-middleware';
-//                        or 'redux-date-now-middleware/src'
+import dateNowMiddlware from 'redux-date-now-middleware'; // Or 'redux-date-now-middleware/src'
 
 let store = createStore(
   reducers,
   {}
-  applyMiddleware(logger)
+  applyMiddleware(dateNowMiddleware())
 );
+```
+
+```
+import { DATE_NOW } from 'redux-date-now-middleware';
+
+const initialState = {};
+export default (state = initialState, action) => {
+  if (action.type === 'update') {
+     return { ...state, data: action.data, lastModified: action[DATE_NOW] };
+  }
+  return state;
+};
+```
+
+## Customization
+
+```
+dateNowMiddleware('custom name', () => new Date())
 ```
